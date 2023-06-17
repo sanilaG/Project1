@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Donor Form</title>
+  <link rel="stylesheet" href="doner.css">
+  
+</head>
+<body>
+  <div class="center">
+    <form action="" method="post" class="form">
+      <img src="bd logo.jpg" class="logo"><span>Blood Donation Form</span>
+      <p>Please answer the following questions correctly. This will help to protect you and the patient who receives your blood.</p>
+      
+      <div class="question">
+        <span class="question-label">What is your blood type?</span><br>
+        <label><input type="radio" value="O" name="blood" >O</label>
+        <label><input type="radio" value="O-" name="blood">O-</label><br>
+        <label><input type="radio" value="A+" name="blood">A+</label>
+        <label><input type="radio" value="A-" name="blood">A-</label><br>
+        <label><input type="radio" value="B+" name="blood">B+</label>
+        <label><input type="radio" value="B-" name="blood">B-</label><br>
+        <label><input type="radio" value="AB+" name="blood">AB+</label>
+        <label><input type="radio" value="AB-" name="blood">AB-</label>
+      </div>
+
+      <div class="question">
+        <div id="2"
+        <label for="first-name">First Name:</label>
+        <input type="text" class="name" name="first-name" placeholder="Enter your first name" required><br>
+        <label for="middle-name" >Middle Name:</label>
+        <input type="text" class="name" name="middle-name" placeholder="Enter your middle name"><br>
+        <label for="last-name">Last Name:</label>
+        <input type="text" class="name" name="last-name" placeholder="Enter your last name" required><br>
+      </div>
+      <div class="question">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="phone" placeholder="Enter your phone number">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" placeholder="Enter your email address">
+      </div>
+
+
+      <div class="question">
+        <label for="birthdate">Birth Date:</label>
+        <input type="date" id="birthdate" name="birthdate" required>
+        <label for="gender">Gender:</label>
+        <label><input type="radio" name="gender" value="male" required>Male</label>
+        <label><input type="radio" name="gender" value="female">Female</label>
+        <label><input type="radio" name="gender" value="other">Other</label>
+      </div>
+
+     
+
+      <input type="submit" value="Submit" id="submit">
+    </form>
+  </div>
+</body>
+</html>

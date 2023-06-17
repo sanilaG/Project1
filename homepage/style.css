@@ -1,0 +1,117 @@
+.{
+    font-family: "poppins",sans-serif;
+  }    
+.navbar {
+    display: flex;
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    background-color:maroon;
+    padding: 0;
+    margin: 0;
+
+}
+
+.nav-list {
+    display: flex;
+    width: 75%;
+    justify-content: space-around;
+    align-items: center;
+    margin: 0;
+    height:60px;
+}
+
+.nav-list li {
+    list-style: none;
+}
+
+.nav-list li a {
+    text-decoration: none;
+    color: white;
+    font-weight: 600;
+}
+
+.rightnav {
+    width: 25%;
+    text-align: center; /* Update the text-align property to center */
+    display: flex;
+    justify-content: flex-end; /* Add this property to align the content at the end */
+    align-items: center; /* Add this property to vertically align the content */
+}
+
+#search {
+    padding: 5px;
+    border-radius: 20px;
+    top:10px;
+}
+
+/* Add the following style */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.bgimg {
+    background-image: url('hm.jpg');
+    background-size: cover;
+    background-position: center;
+    min-height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    height:600px;
+}
+.bgimg::after{
+    content:'';
+    position:absolute;
+    width:100%;
+    height:100%;
+    
+    background-color: rgba(0,0,0,0.65); 
+}
+.hero  {
+    font-size: 40px;
+    margin-bottom: 10px;
+    height:200px;
+    color:#fff;
+    position:absolute;
+    text-align: center;
+    top:20%;
+    left:20%;
+    animation:animate 1.5s steps(10) infinite;
+
+}
+.btn {
+    display: inline-block;
+    padding:5px 20px;
+    background-color:maroon;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+  }
+
+  .btn:hover {
+    background-color: #9C1919;
+  }
+
+footer {
+  background-color:#FBE4E4;
+  color:black;
+  padding: 20px;
+  text-align: center;
+}
+

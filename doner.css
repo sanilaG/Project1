@@ -1,0 +1,114 @@
+body{
+    margin:10;
+    padding:10;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+  
+}
+body{
+    background-color: #E25446;
+    margin:15px;
+    
+
+}
+.center{
+    display:flex;
+    height:850px;
+    width:850px;
+    margin:auto;
+    margin-top:50px;
+    box-shadow: 15px 15px 20px black;
+    text-align: left;
+    
+}
+.form{
+    
+    display:flex;
+    flex-direction: column;
+    width:100%;
+    align-items:left;
+    background-color:#FBE4E4;
+    border-radius: 10px;
+    
+}
+.form h2{
+    font-size:2rem;
+    margin:20px;
+    color:maroon;
+    top:5px;
+}
+.form p{
+
+}
+.box{
+    padding:5px;
+    width:20%;
+    margin:5px;
+    border:1px solid black;
+    outline:none;
+    border-radius:10px;
+    text-align: left;
+  
+}
+  
+
+
+#submit{
+    padding: 12px;
+    width:40%;
+    margin-top:40px;
+    background-color:rgb(211, 53, 53);
+    font-weight: bold;
+    border:none;
+    outline:none;
+    border-radius: 20px;
+}
+#submit:hover{
+    cursor:pointer;
+    background-color:#E25446;
+}
+.question{
+    margin:15px;
+
+}
+
+
+
+
+.type{
+    
+    margin-left:17px;
+        display: flex;
+        justify-content: space-between;
+        height:30px;
+      
+
+}
+.name{
+    display:flex;
+    border:2px solid black;
+    border-radius: 5px;
+}
+.dj{
+    margin-left:15px;
+    display: flex;
+    justify-content: space-between; 
+    width:60%;
+    height:30px;
+    border-radius:5px;
+}
+.gender{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.logo{
+    height:40px;
+    width:50px;
+    top:5px;
+    margin:5px;
+    display:flex;
+}
