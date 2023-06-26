@@ -54,7 +54,7 @@ body, html {
 
 
 .bgimg {
-    background-image: url('hm.jpg');
+    background-image: url('../jpg/hm.jpg');
     background-size: cover;
     background-position: center;
     min-height: 100%;

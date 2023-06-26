@@ -35,6 +35,21 @@
       <div class="question">
         <label for="phone">Phone Number:</label>
         <input type="text" id="phone" name="Phone" placeholder="Enter your phone number" required>
+        <?php if (isset($errors['Phone'])): ?>
+    <span class="error"><?php echo $errors['Phone']; ?></span>
+  <?php endif; ?>
+  <?php
+  if (isset($_POST['Phone'])) {
+    $phone = $_POST['Phone'];
+    if (!preg_match('/^\+977-98\d{8}$/', $phone)) {
+      $errors['Phone'] = "Invalid phone number. Phone number should start with '+977-98' and have 10 digits.";
+    }
+  }
+  if (isset($errors['Phone'])) {
+    echo '<span class="error">' . $errors['Phone'] . '</span>';
+  }
+  ?>
+  
         </div>
         <div class="question">
           
@@ -44,12 +59,19 @@
         <div class="question">
         <label for="email">Email:</label>
         <input type="email" id="email" name="Email" placeholder="Enter your email address" required>
+        <?php if (isset($errors['Email'])): ?>
+        <span class="error"><?php echo $errors['Email']; ?></span>
+      <?php endif; ?>
+      
       </div>
 
 
       <div class="question">
         <label for="dob">Birth Date:</label>
         <input type="date" id="dob" name="Dob" required>
+        <?php if (isset($errors['Age'])): ?>
+    <span class="error"><?php echo $errors['Age']; ?></span>
+  <?php endif; ?>
         </div>
         
       <div class="question">

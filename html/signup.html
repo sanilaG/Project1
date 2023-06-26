@@ -1,16 +1,13 @@
-<!--<?php
-session_start();
-
-?--><!DOCTYPE html>
+<!DOCTYPE html>
 <html>
     <head>
         <title> Login page</title>
     </head>
-    <link rel="stylesheet" href="login.css">
+    <link rel="stylesheet" href="../css/login.css">
     <body>
         <div class="center">
          
-          <form action="signup.html" method="Post" class="form">
+          <form action="../php/signup.php" method="Post" class="form">
           <h2>Create new account</h2>
         
             <input type="text" placeholder="Enter email address" name="Email" class="box" required>
@@ -20,31 +17,9 @@ session_start();
                 Already have an account?&nbsp;<a href="login.html">Login</a></div>
           </form>
           <div class="side">
-            <img src="blood.png" alt="">
+            <img src="../jpg/blood.png" alt="">
           </div>
             </div>
         
     </body>
 </html>
-<!--php
-include "connection.php";
-if(isset($_POST['submit'])){
-
-   $Email=mysqli_real_escape-string($conn,$_POST['Email']);
-    $Password=mysqli_real_escape-string($conn,$_POST['Password']);
-
-    $selectquery="select*from users where email='$email'";
-    $query=mysqli_query($conn,$emailquery);
-
-    $emailcount=mysqli_num_rows($query);
-    if($emailcount>0){
-      echo"email already exists";
-    }else{
-      $insertquery="Insert into users(Email,Password) values($Email,$Password)";
-    }
-      }
-
-
-
-
-?>-->
