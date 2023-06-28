@@ -7,7 +7,7 @@
 </head>
 <body>
   <div class="center">
-    <form action="../php/crud.php" method="post" class="form">
+    <form action="../php/donor/form.php" method="Post" class="form">
       <h>Blood Donation Form</h>
       <p>Please answer the following questions correctly. This will help to protect you and the patient who receives your blood.</p>
       <div class="line"></div>

@@ -32,7 +32,7 @@ while ($row = $result->fetch_assoc()) {
   echo "<td>" . $row['Email'] . "</td>";
   echo "<td>" . $row['Dob'] . "</td>";
   echo "<td>" . $row['Gender'] . "</td>";
-  echo "<td><a href='edit.php?id=" . $row['id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['id'] . "'>Delete</a></td>";
+  echo "<td><a href='Edit.php?id=" . $row['id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['id'] . "'>Delete</a></td>";
   echo "</tr>";
 }
 
@@ -47,4 +47,9 @@ $stmt->close();
 $conn->close();
 
           ?>
+
+
+        
+          
+               
           
