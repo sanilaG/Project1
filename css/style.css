@@ -107,8 +107,29 @@ body, html {
   .btn:hover {
     background-color: #9C1919;
   }
+  .btt {
+    display: block;
+    padding: 10px 20px; /* Adjust padding to increase the size */
+    background-color: maroon;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    outline: none;
+    transition: background-color 0.3s ease;
+    text-align: center;
+    margin-top: 10px;
+}
+
+
+
+
   
-  
+
   footer {
     background-color:black;
     padding: 40px 0;

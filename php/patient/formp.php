@@ -2,18 +2,18 @@
 <html>
 <head>
   <title>Donor Form</title>
-  <link rel="stylesheet" href="../css/doner.css">
+  <link rel="stylesheet" href="../../css/doner.css">
   
 </head>
 <body>
   <div class="center">
-    <form action="../php/donor/form.php" method="Post" class="form">
+    <form action="insert.php" method="Post" class="form">
       <h>Blood Donation Form</h>
-      <p>Please answer the following questions correctly. This will help to protect you and the patient who receives your blood.</p>
+      <p>Please answer the following questions correctly.</p>
       <div class="line"></div>
       <div class="question">
         <span class="question-label" required>What is your blood type?</span><br>
-        <label><input type="radio" value="O+" name="Blood" >O</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><input type="radio" value="O" name="Blood" >O</label>&nbsp;&nbsp;&nbsp;&nbsp;
         <label><input type="radio" value="O-" name="Blood">O-</label><br>
         <label><input type="radio" value="A+" name="Blood">A+</label>&nbsp;&nbsp;
         <label><input type="radio" value="A-" name="Blood">A-</label><br>
@@ -49,31 +49,13 @@
     echo '<span class="error">' . $errors['Phone'] . '</span>';
   }
   ?>
-  
-        </div>
+    </div>
         <div class="question">
           
           <label for="phone">Current Address</label>:</label>
           <input type="text" id="address"  placeholder="Enter your current address" name="Address" required>
           </div>
-        <div class="question">
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="Email" placeholder="Enter your email address" required>
-        <?php if (isset($errors['Email'])): ?>
-        <span class="error"><?php echo $errors['Email']; ?></span>
-      <?php endif; ?>
-      
-      </div>
-
-
-      <div class="question">
-        <label for="dob">Birth Date:</label>
-        <input type="date" id="dob" name="Dob" required>
-        <?php if (isset($errors['Age'])): ?>
-    <span class="error"><?php echo $errors['Age']; ?></span>
-  <?php endif; ?>
-        </div>
-        
+    
       <div class="question">
         <label for="gender">Gender:</label>
         <label><input type="radio" name="Gender" value="male" required>Male</label>
@@ -81,9 +63,7 @@
         <label><input type="radio" name="Gender" value="other">Other</label>
       </div>
 
-     
-
-      <input type="submit" value="Submit" id="submit">
+     <input type="submit" value="Submit" id="submit">
     </form>
   </div>
 </body>

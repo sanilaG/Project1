@@ -1,0 +1,146 @@
+<?php
+// Check if the patient ID is provided through the URL parameter
+if (isset($_GET['id'])) {
+    $patient_id = $_GET['id'];
+
+    // Perform database query to fetch patient information using the provided ID
+    $connection = mysqli_connect('localhost', 'root', '', 'project');
+
+    // Check if the connection was successful
+    if (!$connection) {
+        die("Database connection failed: " . mysqli_connect_error());
+    }
+
+    $select_query = "SELECT * FROM patient WHERE id = ?";
+    $stmt_select = $connection->prepare($select_query);
+    $stmt_select->bind_param('i', $patient_id);
+    $stmt_select->execute();
+    $result = $stmt_select->get_result();
+    $patient = $result->fetch_assoc();
+
+    // Close the database connection
+    $stmt_select->close();
+    mysqli_close($connection);
+
+    if (!$patient) {
+        die("Patient not found with the given ID.");
+    }
+
+    // Check if the form is submitted for updating patient information
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        // Escape user inputs to prevent SQL injection
+        $Blood = $_POST["Blood"];
+        // Add the other form fields for First_Name, Middle_Name, Last_Name, Phone, Address, and Gender
+
+        // Perform database update operation
+        $connection = mysqli_connect('localhost', 'root', '', 'project');
+
+        // Check if the connection was successful
+        if (!$connection) {
+            die("Database connection failed: " . mysqli_connect_error());
+        }
+
+        $update_query = "UPDATE patient SET Blood = ?, First_Name = ?, Middle_Name = ?, Last_Name = ?, Phone = ?, Address = ?, Gender = ? WHERE id = ?";
+        $stmt_update = $connection->prepare($update_query);
+        $stmt_update->bind_param('sssssssi', $Blood, $First_Name, $Middle_Name, $Last_Name, $Phone, $Address, $Gender, $patient_id);
+
+        if ($stmt_update->execute()) {
+            echo "Patient information updated successfully!";
+            // Optionally, you can redirect the user to a confirmation page or back to the edit form after updating.
+            // header("Location: confirmation_page.php");
+            // exit();
+        } else {
+            echo "Error updating patient information: " . $stmt_update->error;
+        }
+
+        // Close the database connection
+        $stmt_update->close();
+        mysqli_close($connection);
+    }
+} else {
+    die("Missing patient ID parameter.");
+}
+?>
+
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Edit Patient Form</title>
+  <link rel="stylesheet" href="../../css/doner.css">
+</head>
+<body>
+  <div class="center">
+  <!DOCTYPE html>
+<html>
+<head>
+  <title>Donor Form</title>
+  <link rel="stylesheet" href="../../css/doner.css">
+  
+</head>
+<body>
+  <div class="center">
+    <form action="insert.php" method="Post" class="form">
+      <h>Blood Donation Form</h>
+      <p>Please answer the following questions correctly.</p>
+      <div class="line"></div>
+      <div class="question">
+        <span class="question-label" required>What is your blood type?</span><br>
+        <label><input type="radio" value="O" name="Blood" >O</label>&nbsp;&nbsp;&nbsp;&nbsp;
+        <label><input type="radio" value="O-" name="Blood">O-</label><br>
+        <label><input type="radio" value="A+" name="Blood">A+</label>&nbsp;&nbsp;
+        <label><input type="radio" value="A-" name="Blood">A-</label><br>
+        <label><input type="radio" value="B+" name="Blood">B+</label>&nbsp;&nbsp;
+        <label><input type="radio" value="B-" name="Blood">B-</label><br>
+        <label><input type="radio" value="AB+" name="Blood">AB+</label><label>
+          <input type="radio" value="AB-" name="Blood">AB-</label>
+      </div>
+
+      <div class="question">
+        <div id="name">
+        <label for="first-name">First Name:</label>
+        <input type="text" class="name" name="First_Name" placeholder="Enter your first name" required><br>
+        <label for="middle-name" >Middle Name:</label>
+        <input type="text" class="name" name="Middle_Name" placeholder="Enter your middle name"><br>
+        <label for="last-name">Last Name:</label>
+        <input type="text" class="name" name="Last_Name" placeholder="Enter your last name" required><br>
+      </div>
+      <div class="question">
+        <label for="phone">Phone Number:</label>
+        <input type="text" id="phone" name="Phone" placeholder="Enter your phone number" required>
+        <?php if (isset($errors['Phone'])): ?>
+    <span class="error"><?php echo $errors['Phone']; ?></span>
+  <?php endif; ?>
+  <?php
+  if (isset($_POST['Phone'])) {
+    $phone = $_POST['Phone'];
+    if (!preg_match('/^\+977-98\d{8}$/', $phone)) {
+      $errors['Phone'] = "Invalid phone number. Phone number should start with '+977-98' and have 10 digits.";
+    }
+  }
+  if (isset($errors['Phone'])) {
+    echo '<span class="error">' . $errors['Phone'] . '</span>';
+  }
+  ?>
+    </div>
+        <div class="question">
+          
+          <label for="phone">Current Address</label>:</label>
+          <input type="text" id="address"  placeholder="Enter your current address" name="Address" required>
+          </div>
+    
+      <div class="question">
+        <label for="gender">Gender:</label>
+        <label><input type="radio" name="Gender" value="male" required>Male</label>
+        <label><input type="radio" name="Gender" value="female">Female</label>
+        <label><input type="radio" name="Gender" value="other">Other</label>
+      </div>
+
+
+
+
+
+      <input type="submit" value="Update" id="submit">
+    </form>
+  </div>
+</body>
+</html>

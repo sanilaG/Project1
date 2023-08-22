@@ -1,0 +1,117 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+    list-style-type:none;
+    text-decoration: none;
+
+}
+h1,h2,h3,h4,h5,h6{
+    font-family: 'Roboto', sans-serif;
+
+}
+p,a{
+    font-family: 'Roboto', sans-serif;
+}
+img_responsive{
+    display:block;
+    max-width :0 auto;
+    height:auto;
+   
+
+}
+
+.container{
+    max-width:1330px;
+    margin:0 auto;
+    padding-left:15px ;
+    padding-right:15px ;
+
+}
+
+.clear{
+    clear:both;
+
+
+}
+   
+
+/*sidebar*/
+section#sidebar {
+    width: 20%;
+    background-color: #e11818;
+    color: #fff;
+    top: 0;
+    left: 0;
+    position: fixed;
+    height: 100%;
+   
+}
+/*main-content*/
+section#main-content {
+    width: 80%;
+    float: right;
+    
+}
+
+.sidebar.brand {
+    padding: 40px 40px;
+}
+
+.sidebar-menu ul li a {
+    display: block;
+    padding: 10px 40px;
+    color: #fff;
+}
+
+.sidebar-menu {
+    margin-top: 30px;
+}
+
+header.main-header {
+    
+   
+    position: fixed;
+    background-color: #fff;
+    width: 100%;
+    box-shadow: 10px 10px 20px #bbb;
+}
+
+.sidebar-menu li:hover {
+    background-color:rgba(0,0,0,0,5) ;
+}
+
+.sidebar-menu li {
+   transition: all 0.5s ease;
+}
+
+.header-left {
+    float: left;
+    width: 33%;
+    padding: 20px;
+}
+
+input.Search.bar {
+    width: 50%;
+    border-radius: 20px;
+    padding: 8px 12px;
+    border: 2px solid #bbb;
+
+}
+input.Search.bar:focus {
+    outline: none;
+    border: 2px solid #fd5a5e;
+    width: 95%;
+}
+
+
+.card-box {
+    background-color:rgb(114, 182, 114);
+    
+    margin-left: 2%;
+    margin-right: 2%;
+    float: left;
+    width: 21%;
+    margin-top: 120px;
+    padding: 25px;
+}

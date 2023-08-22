@@ -13,11 +13,11 @@
     <header>
         <nav class="navbar">
             <ul class="nav-list">
-                <li><a href="homepage.html">Home </a></li>
-                <li><a href="list.html">Donors List</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="contact.html">contact Us</a></li>
-                <li><a href="login.html">Login</a></li>
+                <li><a href="homepage.php">Home </a></li>
+                <li><a href="../html/donor.php">Donote now</a></li>
+                <li><a href="../html/about.html">About Us</a></li>
+                <li><a href="../html/contact.html">contact Us</a></li>
+                <li><a href="../login.html">Login</a></li>
                
             </ul>
             <div class="rightnav">
@@ -32,8 +32,8 @@
             <section class="hero">
                     <h1>Welcome to Blood Donation</h1>
                     <p>Save lives by donating blood</p>
-                    <a href="donor.html" class="btn"><p class="animate__heartBeat">Donate Now</p></a>
-                    <a href="signup.html"class="btn"><p class="animate__heartBeat">Sign Up</p></a></li>
+                    <a href="patient/formp.php" class="btn"><p class="animate__heartBeat">Request Now</p></a>
+                    <a href="../signup.html"class="btn"><p class="animate__heartBeat">Sign Up</p></a></li>
             </section>
             
     

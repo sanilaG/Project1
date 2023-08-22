@@ -94,7 +94,7 @@ if ($age < 18) {
                     }
           
                     // Redirect to dashboard.php if form submitted successfully
-                    header("Location:dashboard.php");
+                    header("Location:notification.php");
                     exit();
                   }
                 } else {
