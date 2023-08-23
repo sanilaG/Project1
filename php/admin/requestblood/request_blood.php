@@ -8,10 +8,66 @@
     </style>
 </head>
 <body>
+
+
+<style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1px solid #ddd;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+
+        th {
+            background-color:#1abc9c;
+        }
+
+        tr:hover {
+            background-color: #f5f5f5;
+        }
+
+        .action-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .accept-button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .reject-button {
+            background-color: #f44336;
+            color: #f2f2f2;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+        }
+
+        .accept-button:hover, .reject-button:hover {
+            opacity: 0.8;
+        }
+        </style>
     <h1>Request Blood</h1>
     <?php
 
-require '../include/email.php';
 
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -74,8 +130,8 @@ ini_set('display_errors', '1');
             echo "<td>{$row['Blood']}</td>";
 
             echo "<td>";
-            echo "<a href='?id={$row['id']}&action=accept'>Accept</a> | ";
-            echo "<a href='?id={$row['id']}&action=reject'>Reject</a>";
+            echo "<a href='email.php?id={$row['id']}&action=accept'>Accept</a> | ";
+            echo "<a href='email.php?id={$row['id']}&action=reject'>Reject</a>";
             echo "</td>";
             echo "</tr>";
         }

@@ -16,17 +16,48 @@ $mail = new PHPMailer(true);
 
 try {
     // ... Your existing code for email configuration ...
-    $mail->setFrom('bca210621_sanila@achsnepal.edu.np', 'Sanila Gharti'); 
+
+    // SMTP Configuration
+    $mail->isSMTP();
+    $mail->Host = 'smtp.gmail.com'; // Your SMTP server host
+    $mail->SMTPAuth = true;
+    $mail->Username = 'bca210621_sanila@achsnepal.edu.np'; // Your SMTP username
+    $mail->Password = 'apvqvghbadnqsbpb'; // Your SMTP password
+    $mail->Port = 587; // SMTP port (usually 587 or 465)
 
     // Check if "id" is set in the URL
     if (isset($_GET['id'])) {
         // Fetch user email based on the provided ID
         $Email = fetchUserEmail($_GET['id']);
-        
-        if ($Email) {
-            // ... Your existing code for sending email ...
 
-            echo 'Email sent and request status updated.';
+        if ($Email) {
+            // Check if status is set
+            if (isset($_GET['status'])) {
+                $status = $_GET['status'];
+                if ($status === 'accept') {
+                    $emailSubject = "Request Accepted";
+                    $emailMessage = "Your request has been accepted. Thank you for donating!";
+                } elseif ($status === 'reject') {
+                    $emailSubject = "Request Rejected";
+                    $emailMessage = "We're sorry, but your request has been rejected. Please feel free to try again.";
+                } else {
+                    echo 'Invalid status provided.';
+                    exit;
+                }
+
+                $mail->addAddress($Email); // Add recipient email address
+                $mail->Subject = $emailSubject;
+                $mail->Body = $emailMessage;
+
+                // Send the email
+                if ($mail->send()) {
+                    echo 'Email sent and request status updated.';
+                } else {
+                    echo 'Email could not be sent. Mailer Error: ', $mail->ErrorInfo;
+                }
+            } else {
+                echo 'No status provided.';
+            }
         } else {
             echo 'User email not found.';
         }
@@ -47,12 +78,12 @@ function fetchUserEmail($id) {
 
     // Assuming the table name is "patient" and email is in the "Email" column
     $sql = "SELECT Email FROM patient WHERE id = $id";
-    
+
     // For debugging purposes, print the query
     echo "SQL Query: $sql<br>";
 
     $result = $conn->query($sql);
-    
+
     if ($result === false) {
         echo "Query error: " . $conn->error;
         return null;

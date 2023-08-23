@@ -184,7 +184,7 @@
                 <li><a href="../html/donor.php">Donate Now</a></li>
                 <li><a href="../html/about.html">About Us</a></li>
                 <li><a href="../html/contact.html">Contact Us</a></li>
-                <li><a href="login/logout.php">Logout</a></li>
+                <li><a href="php/logout.php">Logout</a></li>
             </ul>
         </nav>
     </header>

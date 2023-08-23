@@ -91,7 +91,7 @@ echo "<tr><th>ID</th><th>Blood</th><th>First Name</th><th>Last Name</th><th>Phon
 
 while ($row = $result->fetch_assoc()) {
   echo "<tr>";
-  echo "<td>" . $row['id'] . "</td>";
+  echo "<td>" . $row['donor_id'] . "</td>";
   echo "<td>" . $row['Blood'] . "</td>";
   echo "<td>" . $row['First_Name'] . "</td>";
   echo "<td>" . $row['Last_Name'] . "</td>";
@@ -100,7 +100,7 @@ while ($row = $result->fetch_assoc()) {
   echo "<td>" . $row['Email'] . "</td>";
   echo "<td>" . $row['Dob'] . "</td>";
   echo "<td>" . $row['Gender'] . "</td>";
-  echo "<td><a href='Edit.php?id=" . $row['id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['id'] . "'>Delete</a></td>";
+  echo "<td><a href='Edit.php?id=" . $row['donor_id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['donor_id'] . "'>Delete</a></td>";
   echo "</tr>";
 }
 
