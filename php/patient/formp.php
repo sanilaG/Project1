@@ -49,6 +49,15 @@
     echo '<span class="error">' . $errors['Phone'] . '</span>';
   }
   ?>
+<div class="question">
+<label for="email">Email:</label>
+<input type="email" id="email" name="Email" placeholder="Enter your email address" required>
+ <?php if (isset($errors['Email'])): ?>
+ <span class="error"><?php echo $errors['Email']; ?></span>
+ <?php endif; ?>
+      
+      </div>
+
     </div>
         <div class="question">
           

@@ -126,41 +126,7 @@
 
 
  
-    <?php
-    if (isset($_GET['bloodType'])) {
-        $selectedBloodType = $_GET['bloodType'];
-
-        // Create a database connection
-        $conn = new mysqli("localhost", "root", "", "Project");
-
-        // Check the connection
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
-
-        // Fetch data based on selected blood type
-        $sql = "SELECT * FROM your_table_name WHERE Blood = '$selectedBloodType'";
-        $result = $conn->query($sql);
-
-        if ($result->num_rows > 0) {
-            while ($row = $result->fetch_assoc()) {
-                echo "<p>Name: " . $row['First_Name'] . " " . $row['Middle_Name'] . " " . $row['Last_Name'] . "</p>";
-                echo "<p>Phone: " . $row['Phone'] . "</p>";
-                echo "<p>Address: " . $row['Address'] . "</p>";
-                echo "<p>Email: " . $row['Email'] . "</p>";
-                echo "<p>Date of Birth: " . $row['Dob'] . "</p>";
-                echo "<p>Gender: " . $row['Gender'] . "</p>";
-                // Add more fields as needed
-            }
-        } else {
-            echo "No data available for the selected blood type.";
-        }
-
-        $conn->close();
-    } else {
-        echo "Blood type not specified.";
-    }
-    ?>
+    
 
 
 

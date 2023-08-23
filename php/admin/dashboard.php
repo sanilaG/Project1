@@ -26,7 +26,7 @@
            <li><a href="select.php"><i class="fa fa-file"></i><span>Donor list</span></a></li>
            <li><a href="requestblood/request_blood.php"><i class="fa fa-users"></i><span>Request</span></a></li>
            <li><a href="../patient/display.php"><i class="fa fa-users"></i><span>Patient</span></a></li>
-           <li><a href="../homepage"><i class="fa fa-users"></i><span>Log out</span></a></li>
+           <li><a href="../homepage.php"><i class="fa fa-users"></i><span>Log out</span></a></li>
         </ul>
     </div>
 </section>

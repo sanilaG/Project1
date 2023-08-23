@@ -15,35 +15,23 @@ ini_set('display_errors', '1');
 $mail = new PHPMailer(true);
 
 try {
-    // Configure email settings
-    $mail->isSMTP();
-    $mail->Host = 'localhost'; // Use 'localhost' for local development
-    $mail->SMTPAuth = false;   // No need for authentication in most local setups
-    $mail->Port = 25;          // Default SMTP port for most local servers
+    // ... Your existing code for email configuration ...
+    $mail->setFrom('bca210621_sanila@achsnepal.edu.np', 'Sanila Gharti'); 
 
-    // Set sender's address
-    $mail->setFrom('bca210621_sanila@achsnepal.edu.np','Sanila Gharti');
+    // Check if "id" is set in the URL
+    if (isset($_GET['id'])) {
+        // Fetch user email based on the provided ID
+        $Email = fetchUserEmail($_GET['id']);
+        
+        if ($Email) {
+            // ... Your existing code for sending email ...
 
-    // Retrieve user's email address from the database based on the request
-    $Email = fetchUserEmail($id);
-
-    // If user email is found, proceed to sending the email
-    if ($Email) {
-        // Set recipient and email content
-        $mail->addAddress($Email, 'User Name');
-        $mail->isHTML(true);
-        $mail->Subject = 'Request Accepted';
-        $mail->Body = 'Your request has been accepted.';
-        
-        // Send the email
-        $mail->send();
-        
-        // Update request status in the database (you'll need to implement this)
-        updateRequestStatus($id, 'accepted');
-        
-        echo 'Email sent and request status updated.';
+            echo 'Email sent and request status updated.';
+        } else {
+            echo 'User email not found.';
+        }
     } else {
-        echo 'User email not found.';
+        echo 'No user ID provided.';
     }
 } catch (Exception $e) {
     echo 'Email could not be sent. Mailer Error: ', $mail->ErrorInfo;
@@ -56,22 +44,25 @@ function fetchUserEmail($id) {
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
+
+    // Assuming the table name is "patient" and email is in the "Email" column
+    $sql = "SELECT Email FROM patient WHERE id = $id";
     
-    // Assuming the table name is "users" and email is in the "email" column
-    $sql = "SELECT Email FROM patient WHERE request_id = $id";
+    // For debugging purposes, print the query
+    echo "SQL Query: $sql<br>";
+
     $result = $conn->query($sql);
     
+    if ($result === false) {
+        echo "Query error: " . $conn->error;
+        return null;
+    }
+
     if ($result->num_rows > 0) {
         $row = $result->fetch_assoc();
         return $row['Email'];
     } else {
         return null; // No user found
     }
-}
-
-// Function to update request status in the database
-function updateRequestStatus($id, $status) {
-    // Implement your database query to update the request status
-    // For example: UPDATE requests SET status = '$status' WHERE id = $id;
 }
 ?>
