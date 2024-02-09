@@ -100,7 +100,7 @@ while ($row = $result->fetch_assoc()) {
   echo "<td>" . $row['Email'] . "</td>";
   echo "<td>" . $row['Dob'] . "</td>";
   echo "<td>" . $row['Gender'] . "</td>";
-  echo "<td><a href='Edit.php?id=" . $row['donor_id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['donor_id'] . "'>Delete</a></td>";
+  echo "<td><a href='Edit1.php?id=" . $row['donor_id'] . "'>Edit</a> | <a href='delete.php?id=" . $row['donor_id'] . "'>Delete</a></td>";
   echo "</tr>";
 }
 

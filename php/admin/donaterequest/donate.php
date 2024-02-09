@@ -3,7 +3,17 @@
 <head>
     <title>Admin Dashboard</title>
     <style>
-        body {
+        /* ... your existing CSS styles ... */
+        /* Add your existing CSS styles here */
+    </style>
+</head>
+<body>
+
+<style>
+    /* Your CSS styles */
+
+
+body {
             font-family: Arial, sans-serif;
         }
 
@@ -56,10 +66,10 @@
         .accept-button:hover, .reject-button:hover {
             opacity: 0.8;
         }
-        
-    </style>
+        </style>
 
-<h1>Donor Request</h1>
+<h1>Donor Requests</h1>
+
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', '1');
@@ -72,36 +82,66 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
-// Retrieve pending requests from the database
+// Initialize variables
+$donor_id = 0;
+$action = "";
+
+if (isset($_GET['donor_id']) && isset($_GET['action'])) {
+    $donor_id = $_GET['donor_id'];
+    $action = $_GET['action'];
+
+    // Determine the new status for donation
+    $newStatus = "";
+    if ($action === "accept") {
+        $newStatus = "Accepted";
+        // TODO: Send email to donor indicating acceptance
+    } elseif ($action === "reject") {
+        $newStatus = "Rejected";
+        // TODO: Send email to donor indicating rejection
+    }
+
+    if ($newStatus !== "") {
+        // Update the status of the request in the database
+        $adminUpdateSql = "UPDATE form SET donate_status = '$newStatus' WHERE donor_id = $donor_id";
+        if ($conn->query($adminUpdateSql) === TRUE) {
+            // Redirect back to the admin dashboard
+            header("Location: admin_dashboard.php");
+            exit();
+        } else {
+            echo "Error updating status: " . $conn->error;
+        }
+    }
+}
+
+// Retrieve pending donor requests from the database
 $sql = "SELECT * FROM form WHERE donate_status = 'pending'";
 $result = $conn->query($sql);
 
-if ($result === false) {
-    echo "Query error: " . mysqli_error($conn);
-    exit;
-}
+if ($result) {
+    if ($result->num_rows > 0) {
+        echo "<table>";
+        echo "<tr><th>ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Blood Type</th><th>Action</th></tr>";
+        while ($row = $result->fetch_assoc()) {
+            echo "<tr>";
+            echo "<td>{$row['donor_id']}</td>";
+            echo "<td>{$row['First_Name']} {$row['Last_Name']}</td>";
+            echo "<td>{$row['Phone']}</td>";
+            echo "<td>{$row['Email']}</td>";
+            echo "<td>{$row['Address']}</td>";
+            echo "<td>{$row['Blood']}</td>";
 
-if ($result->num_rows > 0) {
-    echo "<table>";
-    echo "<tr><th>ID</th><th>Name</th><th>Phone</th><th>Email</th><th>Address</th><th>Blood Type</th><th>Action</th></tr>";
-    while ($row = $result->fetch_assoc()) {
-        echo "<tr>";
-        echo "<td>{$row['donor_id']}</td>";
-        echo "<td>{$row['First_Name']} {$row['Last_Name']}</td>";
-        echo "<td>{$row['Phone']}</td>";
-        echo "<td>{$row['Email']}</td>";
-        echo "<td>{$row['Address']}</td>";
-        echo "<td>{$row['Blood']}</td>";
-
-        echo "<td>";
-        echo "<a href='email1.php?donor_id={$row['donor_id']}&action=accept'>Accept</a> | ";
-        echo "<a href='email1.php?donor_id={$row['donor_id']}&action=reject'>Reject</a>";
-        echo "</td>";
-        echo "</tr>";
+            echo "<td>";
+            echo "<a href='email1.php?donor_id={$row['donor_id']}&action=accept'>Accept</a> | ";
+            echo "<a href='email1.php?donor_id={$row['donor_id']}&action=reject'>Reject</a>";
+            echo "</td>";
+            echo "</tr>";
+        }
+        echo "</table>";
+    } else {
+        echo "No pending donor requests.";
     }
-    echo "</table>";
 } else {
-    echo "No pending requests.";
+    echo "Error fetching donor requests: " . $conn->error;
 }
 
 // Close the database connection
